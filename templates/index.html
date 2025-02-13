@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="flex flex-col items-center justify-center min-h-screen p-4">
+        <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg">
+            <h1 class="text-2xl font-bold text-gray-800 text-center">Upload BMP Image for Processing</h1>
+            <form action="/upload" method="post" enctype="multipart/form-data" class="mt-6 space-y-4">
+                <div class="flex flex-col">
+                    <label for="file" class="text-gray-700 font-medium">Choose BMP File</label>
+                    <input type="file" name="file" id="file" accept=".bmp" class="mt-2 file:py-2 file:px-4 file:rounded-lg file:border file:bg-indigo-600 file:text-white file:cursor-pointer">
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700">
+                    Upload & Process
+                </button>
+            </form>
+        </div>
+        <div id="spinner" class="hidden mt-6">
+            <div class="flex justify-center items-center space-x-2">
+                <div class="animate-spin rounded-full h-8 w-8 border-t-4 border-indigo-600"></div>
+                <span class="text-indigo-600 font-medium">Processing...</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector("form").addEventListener("submit", function () {
+            document.getElementById("spinner").classList.remove("hidden");
+        });
+    </script>
+</body>
+</html>
